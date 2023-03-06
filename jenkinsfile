@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    
+    tools {nodejs "node"}
+    
+    stages {
+        stage('Start') {
+            steps {
+                echo 'Building'
+            }
+        }
+        stage('Clone github repository') {
+            steps {
+                git url: 'https://github.com/Magda098/gallery.git', branch: 'master'
+            }
+        }
+        
+        stage('Install dependencies') {
+            steps {
+                sh 'npm install'
+                   
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'curl -X POST REPLACE_WITH_YOUR_RENDER_HOOK_URL&ref=$COMMIT'
+            }
+        }
+        stage('End') {
+            steps {
+                echo 'Build is finished'
+            }
+        }
+    }
+}
