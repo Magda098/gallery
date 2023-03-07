@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const config = require('./_config');
+require('dotenv').config(); 
 
 // Define routes
 let index = require('./routes/index');
@@ -47,7 +48,7 @@ app.use('/image', image);
 
 
  
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3611;
 app.listen(PORT,() =>{
     console.log(`Server is listening at http://localhost:${PORT}`)
 });
