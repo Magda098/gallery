@@ -16,8 +16,8 @@ const app = express();
 
 const MONGODB_URI = process.env.MONGODB_URI || config.mongoURI[app.settings.env]
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true  },(err)=>{
-    mongoose.set('strictQuery', true);
     if (err) {
+        mongoose.set('strictQuery', true);
         console.log(err)
     }else{
         console.log(`Connected to Database: ${MONGODB_URI}`)
